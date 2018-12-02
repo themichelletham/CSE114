@@ -15,10 +15,11 @@ import java.util.ArrayList;
 
 public class ExtraCredit_StringFile {
     public static void main(String[] args){
-        File f = new File("StringFile.txt");
+        File random = new File("RandomStringFile.txt");
+        File sort = new File("SortedStringFile.txt");
         
         try{
-            FileWriter fw = new FileWriter(f, true);
+            FileWriter fw = new FileWriter(random, true);
             PrintWriter pw = new PrintWriter(fw);
             
             // Create an array of 100 Strings
@@ -52,7 +53,7 @@ public class ExtraCredit_StringFile {
             pw.println();
             pw.flush();
             
-            Scanner input = new Scanner(f);
+            Scanner input = new Scanner(random);
             
             // Create an ArrayList (as practice if the size of the array changes)
             /*ArrayList<String> b = new ArrayList<>();
@@ -101,11 +102,23 @@ public class ExtraCredit_StringFile {
                 } 
             }
             
-            // Display sorted Strings
-            for(int i = 0; i < b.length; i++){
-                pw.print(b[i] + " ");
+            try{
+                FileWriter fw2 = new FileWriter(sort, true);
+                PrintWriter pw2 = new PrintWriter(fw2);
+                /*pw2.println();
+                pw2.println(b[0]);
+                pw2.flush();*/
+
+
+                // Display sorted Strings
+                for(int i = 0; i < b.length; i++){
+                    pw2.print(b[i] + " ");
+                }
+                pw2.flush();
             }
-            pw.flush(); 
+            catch(IOException ex){
+             System.out.println("IOException");
+            }   
             
         } 
         catch(IOException ex){
