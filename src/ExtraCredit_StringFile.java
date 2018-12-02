@@ -49,14 +49,33 @@ public class ExtraCredit_StringFile {
             for(int i = 0; i < a.length; i++){
                 pw.print(a[i] + " ");
             }
+            pw.println();
             pw.flush();
             
             Scanner input = new Scanner(f);
             
             // Create an ArrayList (as practice if the size of the array changes)
-            ArrayList<String> b = new ArrayList<>();
+            /*ArrayList<String> b = new ArrayList<>();
             String total = input.nextLine();
+            
             int space = total.indexOf(" ");
+            int start = 0;
+            for(int i = 0; i < 100; i++){
+                b.add(total.substring(start, space));
+                total = total.substring(space + 1);
+                space = total.indexOf(" ");
+            }*/
+            
+            String[] b = new String[100];
+            String total = input.nextLine();
+            int space = total.indexOf(" ");;
+            for(int i = 0; i < b.length; i++){
+                b[i] = total.substring(0, space);
+                total = total.substring(space + 1);
+                space = total.indexOf(" ");
+            }
+            
+            /*int space = total.indexOf(" ");
             int indexN = space;
             int start = 0;
             int length = total.length();
@@ -68,35 +87,23 @@ public class ExtraCredit_StringFile {
                 total = total.substring(start, length - 1); // the total string is altered to what is left
                 space = total.indexOf(" "); // the next space
                 indexN += word.length();
-            }
-            
-            /*String[] b = new String[100];
-            String total = input.nextLine();
-            int space = total.indexOf(" ");
-            int start = 0;
-            for(int i = 0; i < b.length; i++){
-                String word = total.substring(start+1, space);
-                b[i] = word;
-                start += word.length();
-                total = total.substring(space + 1);
-                space = total.indexOf(" ");
-            }*/
-            
-            /*
-            // Bubble Sort
-            for(int i = 0; i < b.size(); i++){
-                for(int j = 0; j < b.size() - i - 1; j++){
-                    if(b.get(j).compareToIgnoreCase(b.get(j + 1)) > 1){
-                        String temp = b.get(j);
-                        b.set(j, b.get(j + 1));
-                        b.set(j + 1, temp);
-                    }
-                } 
             } */
             
+            
+            // Bubble Sort
+            for(int i = 0; i < b.length - 1; i++){
+                for(int j = 0; j < b.length - i - 1; j++){
+                    if(b[j].compareToIgnoreCase(b[j + 1]) > 1){
+                        String temp = b[j];
+                        b[j] = b[j + 1];
+                        b[j + 1] = temp;
+                    }
+                } 
+            }
+            
             // Display sorted Strings
-            for(int i = 0; i < b.size(); i++){
-                pw.print(b.get(i) + " ");
+            for(int i = 0; i < b.length; i++){
+                pw.print(b[i] + " ");
             }
             pw.flush(); 
             
